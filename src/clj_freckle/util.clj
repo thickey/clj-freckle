@@ -6,14 +6,20 @@
 
 ;; Date Utilities
 
-(def xsd-date-format (new SimpleDateFormat "yyyy-MM-dd'T'HH:mm:ss'Z'"))
-(def iso-date-format (new SimpleDateFormat "yyyy-MM-dd"))
+(def xsd-date-format (SimpleDateFormat. "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+(def iso-date-format (SimpleDateFormat. "yyyy-MM-dd"))
 
 (defn parse-xsd-date [s]
   (.parse xsd-date-format s))
 
 (defn parse-iso-date [s]
   (.parse iso-date-format s))
+
+(defn format-xsd-date [d]
+  (.format xsd-date-format d))
+
+(defn format-iso-date [d]
+  (.format iso-date-format d))
 
 (defn after? [d1 d2]
   (< -1 (compare d1 d2)))
